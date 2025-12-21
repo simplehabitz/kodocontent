@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Kodo Content | Early Access</title>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <style>
+        /* Modern Dark Mode Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            background-color: #000000; 
+            color: white; 
+            font-family: 'Courier New', Courier, monospace; /* Tech/Code Vibe */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glow Effects */
+        .glow-lime {
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(132, 204, 22, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .glow-purple {
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Main Content Container */
+        .container {
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .accent { color: #84cc16; } /* Lime Green */
+        .subtext { color: #52525b; margin-bottom: 30px; }
+
+        /* The Form Box */
+        .form-wrapper {
+            background: rgba(24, 24, 27, 0.6);
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            height: 450px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        iframe { width: 100%; height: 100%; border: none; }
+
+        /* The Secret Button */
+        .backdoor-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: #333;
+            font-size: 10px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: monospace;
+            transition: color 0.3s;
+        }
+        .backdoor-btn:hover { color: #84cc16; }
+
+    </style>
+</head>
+<body>
+
+    <div class="glow-lime"></div>
+    <div class="glow-purple"></div>
+
+    <div class="container" id="main-view">
+        <div style="margin-bottom: 20px;">
+            <span style="border: 1px solid #3f6212; background: rgba(63, 98, 18, 0.1); color: #84cc16; padding: 4px 12px; border-radius: 99px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;">
+                Coming 2025
+            </span>
+        </div>
+        
+        <h1>Kodo<span class="accent">Content</span></h1>
+        <p class="subtext">The AI Video Studio for Bored Apes & Kodas.</p>
+
+        <div class="form-wrapper">
+             <iframe 
+                data-tally-src="https://tally.so/r/rjBrd5?transparentBackground=1" 
+                title="Kodo Content Early Access">
+            </iframe>
+        </div>
+    </div>
+
+    <button class="backdoor-btn" onclick="enterDevMode()">[DEV_ACCESS]</button>
+
+    <script>
+        function enterDevMode() {
+            // Since the app isn't built yet, we just show a console message
+            const password = prompt("ENTER SYSTEM PASSKEY:");
+            if(password === "racs") {
+                alert("ACCESS GRANTED. \n(Note: React App not yet deployed. Please upload src code.)");
+            }
+        }
+    </script>
+</body>
+</html>
