@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Kodo Content | Early Access</title>
+    <title>Kodo Content | The IP Content Factory</title>
+    
     <script async src="https://tally.so/widgets/embed.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+
     <style>
-        /* Modern Dark Mode Reset */
+        /* Modern Reset */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            background-color: #000000; 
+            background-color: #050505; 
             color: white; 
-            font-family: 'Courier New', Courier, monospace; /* Tech/Code Vibe */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -22,75 +28,111 @@
             position: relative;
         }
 
-        /* Ambient Glow Effects */
-        .glow-lime {
+        /* Ambient Lighting (Cinematic) */
+        .glow-spot {
             position: absolute;
-            top: -20%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(132, 204, 22, 0.15) 0%, rgba(0,0,0,0) 70%);
+            width: 800px;
+            height: 800px;
             border-radius: 50%;
+            filter: blur(120px);
             z-index: 0;
+            opacity: 0.4;
             pointer-events: none;
+            animation: pulse 10s infinite alternate;
         }
-        .glow-purple {
-            position: absolute;
-            bottom: -20%;
+        .glow-lime {
+            top: -30%;
+            left: -10%;
+            background: radial-gradient(circle, #84cc16 0%, transparent 70%);
+        }
+        .glow-indigo {
+            bottom: -30%;
             right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
+            background: radial-gradient(circle, #6366f1 0%, transparent 70%);
         }
 
-        /* Main Content Container */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        /* Main Container */
         .container {
             z-index: 10;
             text-align: center;
             width: 100%;
-            max-width: 600px;
+            max-width: 550px;
             padding: 20px;
         }
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: -2px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        
-        .accent { color: #84cc16; } /* Lime Green */
-        .subtext { color: #52525b; margin-bottom: 30px; }
-
-        /* The Form Box */
-        .form-wrapper {
-            background: rgba(24, 24, 27, 0.6);
-            border: 1px solid #27272a;
-            border-radius: 16px;
-            height: 450px;
-            width: 100%;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        /* Badge Style */
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 16px;
+            border-radius: 99px;
+            margin-bottom: 24px;
             backdrop-filter: blur(10px);
         }
+        .badge span {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #84cc16, #a3e635);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 16px;
+            background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtext { 
+            font-size: 1.1rem;
+            color: #a1a1aa; 
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        /* Glassmorphism Form Box */
+        .form-wrapper {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            height: 480px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            transition: transform 0.3s ease;
+        }
+        
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* The Secret Button */
+        /* Secret Button */
         .backdoor-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            color: #333;
-            font-size: 10px;
+            bottom: 24px;
+            right: 24px;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            font-weight: 600;
             cursor: pointer;
             border: none;
             background: none;
-            font-family: monospace;
             transition: color 0.3s;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 1px;
         }
         .backdoor-btn:hover { color: #84cc16; }
 
@@ -98,18 +140,17 @@
 </head>
 <body>
 
-    <div class="glow-lime"></div>
-    <div class="glow-purple"></div>
+    <div class="glow-spot glow-lime"></div>
+    <div class="glow-spot glow-indigo"></div>
 
-    <div class="container" id="main-view">
-        <div style="margin-bottom: 20px;">
-            <span style="border: 1px solid #3f6212; background: rgba(63, 98, 18, 0.1); color: #84cc16; padding: 4px 12px; border-radius: 99px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;">
-                Coming 2025
-            </span>
+    <div class="container">
+        
+        <div class="badge">
+            <span>Early Access 2025</span>
         </div>
         
-        <h1>Kodo<span class="accent">Content</span></h1>
-        <p class="subtext">Your IP Content Factory</p>
+        <h1>KodoContent</h1>
+        <p class="subtext">The IP Content Factory</p>
 
         <div class="form-wrapper">
              <iframe 
@@ -119,14 +160,13 @@
         </div>
     </div>
 
-    <button class="backdoor-btn" onclick="enterDevMode()">[DEV_ACCESS]</button>
+    <button class="backdoor-btn" onclick="enterDevMode()">LOG IN</button>
 
     <script>
         function enterDevMode() {
-            // Since the app isn't built yet, we just show a console message
-            const password = prompt("ENTER SYSTEM PASSKEY:");
+            const password = prompt("Auth Token:");
             if(password === "racs") {
-                alert("ACCESS GRANTED. \n(Note: React App not yet deployed. Please upload src code.)");
+                alert("Welcome Back, Admin. \n(Deploy React App to enable Studio Mode.)");
             }
         }
     </script>
