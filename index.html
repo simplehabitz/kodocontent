@@ -111,7 +111,7 @@
             box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
         }
 
-        /* Hero Image & Holograms */
+        /* Hero Visual (VIDEO UPDATE) */
         .hero-visual {
             position: relative;
             height: 500px;
@@ -120,11 +120,16 @@
             align-items: center;
         }
         
-        .hero-char {
+        /* The Video Styling */
+        .hero-video {
             max-height: 100%;
             max-width: 100%;
             z-index: 2;
-            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.2));
+            /* Optional: Soft blend at the bottom so video doesn't have a harsh line */
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.1));
+            border-radius: 12px;
         }
 
         /* Floating Cards Animation */
@@ -146,7 +151,6 @@
         .holo-fill { height: 100%; background: var(--accent-blue); width: 70%; }
 
         .card-1 { top: 10%; left: 5%; animation-delay: 0s; }
-        /* Card-2 Removed */
         .card-3 { top: 40%; right: -5%; animation-delay: 2.5s; width: 100px; text-align: center; }
 
         @keyframes floatCard {
@@ -264,8 +268,14 @@
         </div>
         
         <div class="hero-visual">
-            <img src="3DRacs.jpeg" alt="Racs Character" class="hero-char">
-            
+            <video 
+                src="3DRacs.mp4" 
+                class="hero-video" 
+                autoplay 
+                loop 
+                muted 
+                playsinline>
+            </video>
             <div class="holo-card card-1">
                 <h4>Rendering</h4>
                 <div class="holo-bar"><div class="holo-fill" style="width: 85%"></div></div>
