@@ -9,7 +9,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 
     <style>
         /* --- MODERN RESET & VARS --- */
@@ -29,7 +29,7 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            background-image: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            background-image: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
         }
 
         h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
@@ -136,11 +136,12 @@
         }
 
         .hero-text h1 {
-            font-size: 4.5rem;
-            line-height: 1;
+            font-size: 4.2rem;
+            line-height: 1.1;
             margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
+            text-transform: capitalize; /* Professional casing */
+            letter-spacing: -0.03em;
+            font-weight: 700;
         }
         
         .hero-text p {
@@ -148,7 +149,8 @@
             color: #94a3b8;
             margin-bottom: 48px;
             line-height: 1.6;
-            max-width: 500px;
+            max-width: 520px;
+            font-weight: 400;
         }
 
         .cta-btn {
@@ -157,10 +159,11 @@
             color: white;
             padding: 18px 48px;
             border-radius: 12px;
-            font-weight: 800;
+            font-weight: 700;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-size: 0.9rem;
             box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5);
             transition: all 0.3s ease;
         }
@@ -321,7 +324,8 @@
             }
             .hero-text { order: 1; }
             .hero-visual { order: 2; }
-            .hero-text h1 { font-size: 3rem; }
+            /* Adjusted size for mobile */
+            .hero-text h1 { font-size: 3rem; } 
             .hero-text p { margin-left: auto; margin-right: auto; font-size: 1.1rem; }
             .hero-video { max-height: 60vh; }
             .holo-card { display: none; }
@@ -344,13 +348,13 @@
     </div>
 
     <nav class="container">
-        <img src="logo.jpeg" alt="Kodo Logo" class="logo-img"> 
+        <img src="logo1.png" alt="Kodo Logo" class="logo-img"> 
     </nav>
 
     <section class="hero container">
         <div class="hero-text">
-            <h1>Your IP.<br><span class="text-gradient">Reimagined.</span><br>AI-Powered.</h1>
-            <p>Transform static assets into dynamic content with Kodo's advanced generative AI engine. Your IP content factory.</p>
+            <h1>The Premier Motion Studio <span class="text-gradient">For Digital IP.</span></h1>
+            <p>Elevate your assets from static images to cinematic experiences. Professional video production, powered by next-gen AI.</p>
             <a href="#factory" class="cta-btn">Join The Factory</a>
         </div>
         
