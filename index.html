@@ -139,7 +139,7 @@
             font-size: 4.2rem;
             line-height: 1.1;
             margin-bottom: 24px;
-            text-transform: capitalize; /* Professional casing */
+            text-transform: capitalize; 
             letter-spacing: -0.03em;
             font-weight: 700;
         }
@@ -324,7 +324,6 @@
             }
             .hero-text { order: 1; }
             .hero-visual { order: 2; }
-            /* Adjusted size for mobile */
             .hero-text h1 { font-size: 3rem; } 
             .hero-text p { margin-left: auto; margin-right: auto; font-size: 1.1rem; }
             .hero-video { max-height: 60vh; }
@@ -400,15 +399,24 @@
                     <h3>The Neon Sprint</h3>
                 </div>
             </div>
+            
             <div class="video-card">
                 <div class="video-wrapper">
-                     <div class="placeholder-vid">[ VIDEO PREVIEW 02 ]</div>
+                     <video 
+                        src="morningcoffeeloop.mp4" 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline 
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    </video>
                 </div>
                 <div class="video-info">
                     <span>Standard Cut</span>
                     <h3>Morning Coffee Loop</h3>
                 </div>
             </div>
+
             <div class="video-card">
                 <div class="video-wrapper">
                      <div class="placeholder-vid">[ VIDEO PREVIEW 03 ]</div>
@@ -446,7 +454,7 @@
             </div>
 
             <div class="form-wrapper">
-                <iframe src="https://tally.so/r/nGrB0N?transparentBackground=1" width="100%" height="100%" frameborder="0"></iframe>
+                <iframe src="https://tally.so/r/Ek5MG2?transparentBackground=1" width="100%" height="100%" frameborder="0"></iframe>
             </div>
         </div>
 
