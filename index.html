@@ -24,20 +24,27 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            background-color: #020617; /* Hardcoded fallback color */
             background-color: var(--bg-dark); 
             color: white; 
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            background-image: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
         }
 
         h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
         
         /* --- UTILS --- */
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+        .container { 
+            max-width: 1240px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+            position: relative; 
+            z-index: 10; 
+        }
+        
         .grid { display: grid; gap: 24px; }
+        
         .text-gradient {
             background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
             -webkit-background-clip: text;
@@ -49,7 +56,9 @@
             position: fixed;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            z-index: 0; 
             overflow: hidden;
             pointer-events: none;
         }
@@ -75,7 +84,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
             pointer-events: none;
             background-image: 
                 linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
@@ -83,27 +92,9 @@
             background-size: 40px 40px;
             mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
         }
-        .holo-data-point {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background-color: var(--accent-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-blue);
-            animation: pulseData 3s infinite ease-in-out;
-        }
-        .dp-1 { top: 20%; left: 30%; animation-delay: 0s; }
-        .dp-2 { top: 60%; left: 70%; animation-delay: 1s; }
-        .dp-3 { top: 80%; left: 20%; animation-delay: 2s; }
-        .dp-4 { top: 30%; left: 80%; animation-delay: 1.5s; }
-
-        @keyframes pulseData {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(2); opacity: 1; }
-        }
 
         /* --- NAV & INTEGRATED LOGO --- */
-        nav { padding: 40px 0; text-align: center; }
+        nav { padding: 40px 0; text-align: center; position: relative; z-index: 20; }
         
         .logo-img {
             height: 90px;
@@ -134,6 +125,7 @@
             gap: 60px;
             padding: 40px 0 80px;
             position: relative;
+            z-index: 10;
         }
 
         .hero-text h1 {
@@ -219,7 +211,7 @@
         }
 
         /* --- VIDEO SHOWCASE --- */
-        .showcase { padding: 100px 0; }
+        .showcase { padding: 100px 0; position: relative; z-index: 10; }
         .section-header { text-align: center; margin-bottom: 70px; }
         .section-header h2 { font-size: 3rem; margin-bottom: 12px; }
         .section-header p { color: #94a3b8; font-size: 1.1rem; }
@@ -261,7 +253,7 @@
         .video-info span { font-size: 0.85rem; color: var(--accent-blue); text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; }
 
         /* --- COMMISSION SECTION --- */
-        .commission-section { padding: 80px 0 140px; }
+        .commission-section { padding: 80px 0 140px; position: relative; z-index: 10; }
         
         .toggle-container {
             display: inline-flex;
@@ -341,11 +333,7 @@
     </div>
 
     <div class="holo-bg-elements">
-        <div class="holo-data-point dp-1"></div>
-        <div class="holo-data-point dp-2"></div>
-        <div class="holo-data-point dp-3"></div>
-        <div class="holo-data-point dp-4"></div>
-    </div>
+        </div>
 
     <nav class="container">
         <img src="logo1.png" alt="Kodo Logo" class="logo-img"> 
@@ -361,7 +349,7 @@
         <div class="hero-visual">
             <video 
                 src="3DRacs.mp4" 
-                class="hero-video" 
+                class="hero-video scroll-video" 
                 autoplay 
                 loop 
                 muted 
@@ -396,6 +384,7 @@
                 <div class="video-wrapper">
                     <video 
                         src="neonsprint.mp4" 
+                        class="scroll-video"
                         controls
                         muted 
                         loop 
@@ -413,6 +402,7 @@
                 <div class="video-wrapper">
                      <video 
                         src="morningcoffeeloop.mp4" 
+                        class="scroll-video"
                         controls
                         muted 
                         loop 
@@ -428,7 +418,15 @@
 
             <div class="video-card">
                 <div class="video-wrapper">
-                     <div class="placeholder-vid">[ VIDEO PREVIEW 03 ]</div>
+                     <video 
+                        src="kodobrand.mp4" 
+                        class="scroll-video"
+                        controls
+                        muted 
+                        loop 
+                        playsinline 
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    </video>
                 </div>
                 <div class="video-info">
                     <span>Commercial</span>
@@ -485,6 +483,22 @@
             if(tabName === 'commission') buttons[0].classList.add('active');
             else buttons[1].classList.add('active');
         }
+
+        // SMART PLAYBACK OBSERVER
+        document.addEventListener("DOMContentLoaded", function() {
+            const scrollVideos = document.querySelectorAll('.scroll-video');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(e => console.log("Autoplay prevented"));
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            scrollVideos.forEach(video => observer.observe(video));
+        });
     </script>
 </body>
 </html>
